@@ -2,7 +2,9 @@ Suggested tasks for the Higgs boson supervised classificaiton project
 
 Baseline
 - Produce optimised cut-based analysis using the di-jet mass as a discriminant to use as baseline and for comparison (shouldn’t spend more than ~ 1 day on this)
+	+ https://github.com/samvanstroud/in2HEP/blob/practicalMLproject/practicalMLproject/ATLAS_Cut_Based.ipynb
 - Produce optimised NN-based signal vs background supervised classifier:
+	+ https://github.com/samvanstroud/in2HEP/blob/practicalMLproject/practicalMLproject/ATLAS_NN.ipynb
 	+ Number of nodes in layers
 	+ Number of hidden layers
 	+ Training parameters
