@@ -1,0 +1,18 @@
+Suggested tasks for the Higgs boson supervised classificaiton project
+
+Baseline
+- Produce optimised cut-based analysis using the di-jet mass as a discriminant to use as baseline and for comparison (shouldn’t spend more than ~ 1 day on this)
+- Produce optimised NN-based signal vs background supervised classifier:
+	+ Number of nodes in layers
+	+ Number of hidden layers
+	+ Training parameters
+	+ Activation functions
+	+ Optimisation algorithms
+ - Determine:
+  + Improvement over a cut-based approach
+  + If we have enough training statistics (vary number of input statistics separately for signal and background from 0 -> 100%, does it plateau?)
+  + The importance of the input variables (remove one variable at a time and retrain, how much does the sensitivity degrade by?)
+Extensions:
+- Try automated hyper-parameter optimisation (Baysien, stochastic), compare to a grid search
+- Train a multi-classifier or MVA cascade for the different backgrounds (V+bb, tt, diboson), how does this compare 
+- Determine training uncertainty (how much does performance vary when re-training an identical configuration)
