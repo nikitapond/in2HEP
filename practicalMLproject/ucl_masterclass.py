@@ -181,7 +181,7 @@ def bdt_plot(df,z_s = 10,z_b = 10,show=False, block=False, trafoD_bins = False, 
     #axis titles and lables
     plt.ylabel("Events",fontsize = 20,fontweight='normal')
     axes.yaxis.set_label_coords(-0.07,0.93)
-    plt.xlabel(r"BDT$_{VH}$ output",fontsize = 20,fontweight='normal')
+    plt.xlabel(r"NN$_{VH}$ output",fontsize = 20,fontweight='normal')
     axes.xaxis.set_label_coords(0.89, -0.07)
     an1 = axes.annotate("ATLAS Internal", xy=(0.05, 0.91), xytext=(0.05, 0.91), xycoords=axes.transAxes,fontstyle = 'italic',fontsize = 16)
     offset_from = OffsetFrom(an1, (0, -1.4))
@@ -316,7 +316,7 @@ def nn_output_plot(df,z_s = 10,z_b = 10,show=False, block=False, trafoD_bins = F
     #axis titles and lables
     plt.ylabel("Events",fontsize = 20,fontweight='normal')
     axes.yaxis.set_label_coords(-0.07,0.93)
-    plt.xlabel(r"BDT$_{VH}$ output",fontsize = 20,fontweight='normal')
+    plt.xlabel(r"NN$_{VH}$ output",fontsize = 20,fontweight='normal')
     axes.xaxis.set_label_coords(0.89, -0.07)
     an1 = axes.annotate("ATLAS Internal", xy=(0.05, 0.91), xytext=(0.05, 0.91), xycoords=axes.transAxes,fontstyle = 'italic',fontsize = 16)
 
