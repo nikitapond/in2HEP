@@ -6,4 +6,4 @@ The aim of the week is to introduce students with an interest in STEM to data sc
 
 Each of the first 4 days has an associated jupyter-notebook that the students shall work through and modify. They are summarised below:
 
-[Introduction to Python](./notebooks/Python\ Crash\ Course\ .ipynb)
+[Introduction to Python](./notebooks/Python&#32;Crash&#32;Course&#32;.ipynb)
