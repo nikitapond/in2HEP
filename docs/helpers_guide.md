@@ -10,9 +10,9 @@ Each of the first 4 days has an associated jupyter-notebook that the students sh
 
 * [MNIST](../notebooks/MNIST.ipynb) - A notebook which provides a basic NN that classifies the MNIST digits, as well as a CNN. Students shall be asked only to edit the final model, with the aim of increasing accuracy, without needing to understand how we load/prepare data.
 
-* [Python Crash Course](../notebooks/ATLAS&#32;Cut&#32;Based&#32;.ipynb) - A notebook which introduces the Higg -> bb decay. Data is loaded into a Pandas data frame, and students will aim to increase the sensitivity of the measurement by manually applying 'cuts' that aim to remove background events, and maximise signal events.
+* [ATLAS Cut Based](../notebooks/ATLAS&#32;Cut&#32;Base.ipynb) - A notebook which introduces the Higg -> bb decay. Data is loaded into a Pandas data frame, and students will aim to increase the sensitivity of the measurement by manually applying 'cuts' that aim to remove background events, and maximise signal events.
 
-* [Python Crash Course](../notebooks/ATLAS_NN.ipynb) - A notebook which introduces a neural network to the task of discerning signal from background events. Data preparation is provided, and the students shall only be expected to edit the models, creating plots showing change in sensitivity as certain model parameters are changed. Making of plots should be encouraged, as they will be useful for the presentations on Friday.
+* [ATLAS Neural Network](../notebooks/ATLAS_NN.ipynb) - A notebook which introduces a neural network to the task of discerning signal from background events. Data preparation is provided, and the students shall only be expected to edit the models, creating plots showing change in sensitivity as certain model parameters are changed. Making of plots should be encouraged, as they will be useful for the presentations on Friday.
 
 **Teaching Methods and Pedagogy**
 
