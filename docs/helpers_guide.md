@@ -6,7 +6,7 @@ The aim of the week is to introduce students with an interest in STEM to data sc
 
 Each of the first 4 days has an associated jupyter-notebook that the students shall work through and modify. They are summarised below:
 
-* [Python Crash Course](./notebooks/Python&#32;Crash&#32;Course&#32;.ipynb) - A notebook which introduces python, assuming no prior knowledge, including basics such as print statements, variables, lists, dictionary, and writing functions. The notebook also includes a range of exercises for the students to attempt.
+* [Python Crash Course](../notebooks/Python&#32;Crash&#32;Course&#32;.ipynb) - A notebook which introduces python, assuming no prior knowledge, including basics such as print statements, variables, lists, dictionary, and writing functions. The notebook also includes a range of exercises for the students to attempt.
 
 * [MNIST](./notebooks/MNIST.ipynb) - A notebook which provides a basic NN that classifies the MNIST digits, as well as a CNN. Students shall be asked only to edit the final model, with the aim of increasing accuracy, without needing to understand how we load/prepare data.
 
