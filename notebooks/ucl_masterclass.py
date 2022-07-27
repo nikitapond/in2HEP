@@ -212,7 +212,7 @@ def nn_output_plot(df,z_s = 10,z_b = 10,show=False, block=False, trafoD_bins = F
     plt.ion()
     plt.close("all")
     fig = plt.figure(figsize=(8.5,7))
-    plot_range = (-1, 1)
+    plot_range = (0, 1)
     plot_data = []
     plot_weights = []
     plot_colors = []
@@ -722,5 +722,4 @@ def trafoD_with_error(df, initial_bins=1000, z_s=10, z_b=10): #total number of b
         bins.insert(0,-1.0)
         delta_bins_s.insert(0, sum_w2_s)  #sum of signal event weights^2 for each bin
         delta_bins_b.insert(0, sum_w2_b)  #sum of background event weights^2 for each bin
-        print("TrafoD",len(bins))
         return bins, delta_bins_s, delta_bins_b
