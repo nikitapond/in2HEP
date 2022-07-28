@@ -256,7 +256,6 @@ def nn_output_plot(df,z_s = 10,z_b = 10,show=False, block=False, trafoD_bins = F
              label=legend_names[::-1],
              stacked=True,
              edgecolor='none')
-
     #Plots the additional line over the top for signal events
     df_sig = df.loc[df['Class']==1]
     # Plot.
@@ -287,6 +286,7 @@ def nn_output_plot(df,z_s = 10,z_b = 10,show=False, block=False, trafoD_bins = F
     axes.set_ylim([5,135000])
     axes.set_xlim([-1,1])
     x = [-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1]
+#     x = [0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1]
     plt.xticks(x, x,fontweight = 'normal',fontsize = 20)
     y = [r"10",r"10$^{2}$",r"10$^{3}$",r"10$^{4}$",r"10$^{5}$"]
     yi = [10,100,1000,10000,100000]
@@ -329,7 +329,9 @@ def nn_output_plot(df,z_s = 10,z_b = 10,show=False, block=False, trafoD_bins = F
     offset_from = OffsetFrom(an3, (0, -1.6))
     an4 = axes.annotate("p$^V_T \geq$ 150 GeV", xy=(0.05,0.91), xytext=(0.05, 0.91), xycoords=axes.transAxes, textcoords=offset_from,fontstyle = 'italic',fontsize = 12)
 
-
+    locs, labels = plt.xticks()
+#     labels = [0.5*(float(item) + 1) for item in locs]
+    plt.xticks(locs, [0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1])
     plt.show(block=block)
 
 
