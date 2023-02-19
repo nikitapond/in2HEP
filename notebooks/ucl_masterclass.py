@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import AutoMinorLocator
 from matplotlib.offsetbox import AnchoredText
 from matplotlib.text import OffsetFrom
+from sklearn import preprocessing
 
 
 ##########################
@@ -44,6 +45,53 @@ colour_map = {'VH -> Vbb':'#FF0000',
 legend_names = [r'VH $\rightarrow$ Vbb','Diboson',r"t$\bar t$",'Single top', 'W+(bb,bc,cc,bl)','W+cl','W+ll','Z+(bb,bc,cc,bl)',
                 'Z+cl','Z+ll'
                 ]
+def scale_prepare_data(df_train, df_val, df_test, variables, scaler='minmax'):
+    '''
+    Helper function to apply scaling of data and prepare it for training.
+    Function takes as parameters the 3 dataframes containing test/validation/train data.
+    A list of variables to be used for training is also required, as well as the scaling mode.
+    
+    Parameters:
+        df_train - pandas dataframe containing training data
+        df_val - pandas dataframe containing validation data
+        df_test - pandas dataframe containing test data
+        variables - list of strings of variables to be used for training
+        scaler - string name of scaling mode. Only 'minmax', 'standard' and 'norm' are 
+            supported. Default is 'minmax'.
+    
+    Returns:
+        x_train - numpy array of scaled training data
+        y_train - numpy array of training labels
+        w_train - numpy array of training weights
+        (x_val, y_val) - tuple of two numpy arrays containing scaled validation data 
+            and labels. Returned as a tuple for easy use in model.fit
+        (x_test, y_test) - tuple of two numpy arrays containing scaled test data
+    
+    
+    '''
+    if scaler == 'minmax':
+        scaler = preprocessing.MinMaxScaler()
+    elif scaler == 'standard':
+        scaler = preprocessing.StandardScaler()
+    elif scaler == 'norm':
+        scaler = preprocessing.RobustScaler()
+    else:
+        raise ValueError(f'Scaler {scaler} not recognised. Only minmax, standard and norm are supported.')
+
+    # Calculate the scaling params
+    scaler.fit(df_train[variables])
+    
+    x_train = scaler.transform(df_train[variables])
+    y_train = df_train['Class'].values
+    w_train = df_train['training_weight'].values
+    
+    x_val = scaler.transform(df_val[variables])
+    y_val = df_val['Class'].values
+    
+    x_test = scaler.transform(df_test[variables])
+    y_test = df_test['Class'].values
+    
+    return x_train, y_train, w_train, (x_val, y_val), (x_test, y_test)
 
 
 def setBinCategory(df,bins):
@@ -280,7 +328,7 @@ def nn_output_plot(df,z_s = 10,z_b = 10,show=False, block=False, trafoD_bins = F
 
     #sets axis limits and labels
     x1, x2, y1, y2 = plt.axis()
-    plt.yscale('log', nonposy='clip')   #can comment out this line if log error stops plotting
+    plt.yscale('log')   #can comment out this line if log error stops plotting
     y1 = 5 # make sure we don't set a non-positive y axis lim
     plt.axis((x1, x2, y1, y2 * 1.2))
     axes = plt.gca()
@@ -316,7 +364,7 @@ def nn_output_plot(df,z_s = 10,z_b = 10,show=False, block=False, trafoD_bins = F
     #axis titles and lables
     plt.ylabel("Events",fontsize = 20,fontweight='normal')
     axes.yaxis.set_label_coords(-0.07,0.93)
-    plt.xlabel(r"BDT$_{VH}$ output",fontsize = 20,fontweight='normal')
+    plt.xlabel(r"NN$_{VH}$ output",fontsize = 20,fontweight='normal')
     axes.xaxis.set_label_coords(0.89, -0.07)
     an1 = axes.annotate("ATLAS Internal", xy=(0.05, 0.91), xytext=(0.05, 0.91), xycoords=axes.transAxes,fontstyle = 'italic',fontsize = 16)
 
@@ -722,5 +770,5 @@ def trafoD_with_error(df, initial_bins=1000, z_s=10, z_b=10): #total number of b
         bins.insert(0,-1.0)
         delta_bins_s.insert(0, sum_w2_s)  #sum of signal event weights^2 for each bin
         delta_bins_b.insert(0, sum_w2_b)  #sum of background event weights^2 for each bin
-        print("TrafoD",len(bins))
+        # print("TrafoD",len(bins))
         return bins, delta_bins_s, delta_bins_b
