@@ -28,3 +28,13 @@ You will need:
 - matplotlib
 - tensorflow
 - keras
+- scikit-learn
+
+To install these using conda (ensure conda is installed already):
+```bash
+conda create -n phas0056
+conda activate phas0056
+conda install tensorflow numpy pandas matplotlib keras scikit-learn
+```
+
+We recommend using google colab. It requires no set up, and gives access to powerful GPUs for training.
