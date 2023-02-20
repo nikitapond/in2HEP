@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import AutoMinorLocator
 from matplotlib.offsetbox import AnchoredText
 from matplotlib.text import OffsetFrom
+from matplotlib.lines import Line2D
+
 from sklearn import preprocessing
 
 
@@ -73,10 +75,8 @@ def scale_prepare_data(df_train, df_val, df_test, variables, scaler='minmax'):
         scaler = preprocessing.MinMaxScaler()
     elif scaler == 'standard':
         scaler = preprocessing.StandardScaler()
-    elif scaler == 'norm':
-        scaler = preprocessing.RobustScaler()
     else:
-        raise ValueError(f'Scaler {scaler} not recognised. Only minmax, standard and norm are supported.')
+        raise ValueError(f'Scaler {scaler} not recognised. Only minmax and standard are supported.')
 
     # Calculate the scaling params
     scaler.fit(df_train[variables])
@@ -622,6 +622,27 @@ def sensitivity_cut_based(df):
 #     return df
 #
 
+def mean_std_sensitivity(sensitivities, drop=1):
+    '''
+    Takes the provided sensitities, and calculates the mean and standard
+    deviation, excluding 'drop' elements from the start and end. I.e, removes any 
+    possible outliers
+
+    Params:
+        sensitivies - list of floats: Output model sensitivities
+        drop - number of largest/smallest elements to drop
+    
+    Returns:
+        mean, std - floats
+            Mean and std of sensitivies excluding outliers
+    '''
+
+    sensitivities.sort()
+    if drop > 0:
+        sensitivities = sensitivities[drop:-drop]
+    
+    return np.mean(sensitivities), np.std(sensitivities)
+
 
 def get_row(df,poisson_means,row_number):
     row = []
@@ -631,12 +652,52 @@ def get_row(df,poisson_means,row_number):
 
     return row
 
+def plot_histories(histories):
+
+    if not isinstance(histories, list):
+        histories = [histories]
+    
+    fig, ax = plt.subplots(1,2,figsize=(15,5))
+    main_lines = []
+    main_labels = []
+    for i, hist in enumerate(histories):
+        p = ax[0].plot(hist.history['loss'], label=f'Model {i}')
+        
+        col = p[0].get_color()
+        main_labels.append(f"Model {i}")
+        main_lines.append(Line2D([], [], color=col, lw=2, ls='solid'))
+
+        ax[0].plot(hist.history['val_loss'], c=col, ls='dotted', )
+        ax[0].set_title("Loss")
+        ax[0].set_ylabel("Binary Cross Entropy Loss")
+        ax[0].set_xlabel("Epoch")
+        # ax[0].legend()
+        main_lines.append(Line2D([], [], color=col, lw=2, ls='solid'))
+        ax[1].plot(hist.history['accuracy'], c=col, label='train')
+        ax[1].plot(hist.history['val_accuracy'], ls='dotted', c=col, )
+        ax[1].set_title("Accuracy")
+        ax[1].set_ylabel("Accuracy")
+        ax[1].set_xlabel("Epoch")
+        # ax[1].legend()
+
+    custom_lines = [Line2D([0], [0], color='black', lw=2, ls='solid'),
+                Line2D([0], [0], color='black', lw=2, ls='dotted'),
+                ]
+
+    plt.sca(ax[0])
+    lin_leg = plt.legend(custom_lines, ['Training', 'Validation'], loc='upper center')
+    plt.gca().add_artist(lin_leg)
+    
+    # axes[0,i].set_ylim(ylim[0], 1.4*ylim[1])
+    # main_lines.append(Line2D([], [], color='black', lw=2, ls='--'))
+    plt.legend(main_lines, main_labels, loc='upper right')
+    plt.show()
 
 
 def sensitivity_NN(df):
     """Calculate sensitivity from dataframe with error"""
 
-    bins, bin_sums_w2_s, bin_sums_w2_b = trafoD_with_error(df)
+    bins, bin_sums_w2_s, bin_sums_w2_b = trafoD_with_error(df, 1000)
 
     # Initialise sensitivity and error.
     sens_sq = 0
@@ -772,3 +833,4 @@ def trafoD_with_error(df, initial_bins=1000, z_s=10, z_b=10): #total number of b
         delta_bins_b.insert(0, sum_w2_b)  #sum of background event weights^2 for each bin
         # print("TrafoD",len(bins))
         return bins, delta_bins_s, delta_bins_b
+
