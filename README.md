@@ -8,9 +8,13 @@ The repository can be downloaded as a zip [here](https://github.com/ishank95/in2
 5. Type `jupyter notebook`.
 6. The exercises are stored inside the `notebooks` folder.
 
-For the final NN based exercise, you can use a Google [Colab notebook](https://colab.research.google.com/drive/1wirVz17sY2pWAtfbV3Hxm7aihHtSgvRJ).
-
 Intro slides can be found [here](http://svanstro.web.cern.ch/svanstro/in2hep/in2hep-outline.pdf).
+
+
+For the final NN based exercise, you can use a Google [Colab notebook]. To do this, you go to google colab, and open a notebook. Select 'github'. Under the username, type 'nikitapond', select the repository 'in2Hep/master'. You can then open either the ATLAS_NN notebook or the ATLAS Cut Based. (See image below)
+
+
+<img src="notebooks/images/colab.png"  width="500">
 
 ## If you are stuck...
 
