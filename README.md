@@ -1,6 +1,6 @@
 # in2HEP
 
-The repository can be downloaded as a zip [here](https://github.com/ishank95/in2HEP/archive/master.zip). To get up and running:
+The repository can be downloaded as a zip [here](https://github.com/nikitapond/in2HEP/archive/refs/heads/master.zip). To get up and running:
 1. Download the repoistory as a .zip.
 2. Unzip the folder.
 3. In `start`, load `Anaconda Prompt`.
