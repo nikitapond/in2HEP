@@ -11,10 +11,16 @@ The repository can be downloaded as a zip [here](https://github.com/nikitapond/i
 Intro slides can be found [here](http://svanstro.web.cern.ch/svanstro/in2hep/in2hep-outline.pdf), and an introductory notebook including FAQs can be found [here](https://github.com/nikitapond/in2HEP/blob/master/notebooks/ATLAS_Hbb_Challenge.ipynb)
 
 
+
 For the final NN based exercise, you can use a Google [Colab notebook]. To do this, you go to google colab, and open a notebook. Select 'github'. Under the username, type 'nikitapond', select the repository 'in2Hep/master'. You can then open either the ATLAS_NN notebook or the ATLAS Cut Based. (See image below)
 
 
 <img src="notebooks/images/colab.png"  width="500">
+
+# IMPORTANT
+This repository (github.com/nikitapond/in2HEP) is the only one that should be used for this task. There are older versions of this project, which are linked on this github page. DO NOT USE THESE. They contain an old version of the data, which could negatively effect your results.
+
+
 
 ## If you are stuck...
 
