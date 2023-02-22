@@ -1,4 +1,4 @@
-# in2HEP
+# 3rd Year Machine Learning Mini-project
 
 The repository can be downloaded as a zip [here](https://github.com/nikitapond/in2HEP/archive/refs/heads/master.zip). To get up and running:
 1. Download the repoistory as a .zip.
