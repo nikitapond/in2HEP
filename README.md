@@ -12,7 +12,7 @@ Intro slides can be found [here](http://svanstro.web.cern.ch/svanstro/in2hep/in2
 
 
 
-For the final NN based exercise, you can use a Google [Colab notebook]. To do this, you go to google colab, and open a notebook. Select 'github'. Under the username, type 'nikitapond', select the repository 'in2Hep/master'. You can then open either the ATLAS_NN notebook or the ATLAS Cut Based. (See image below)
+For the final NN based exercise, you can use a [Google Colab notebook](https://colab.research.google.com/). To do this, you go to google colab, and open a notebook. Select 'github'. Under the username, type 'nikitapond', select the repository 'in2Hep/master'. You can then open either the ATLAS_NN notebook or the ATLAS Cut Based. (See image below)
 
 
 <img src="notebooks/images/colab.png"  width="500">
