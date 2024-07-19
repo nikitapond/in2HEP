@@ -279,7 +279,7 @@ def nn_output_plot(df,z_s = 10,z_b = 10,show=False, block=False, trafoD_bins = F
 
     #sets axis limits and labels
     x1, x2, y1, y2 = plt.axis()
-    plt.yscale('log', nonposy='clip')   #can comment out this line if log error stops plotting
+    plt.yscale('log')   #can comment out this line if log error stops plotting
     y1 = 5 # make sure we don't set a non-positive y axis lim
     plt.axis((x1, x2, y1, y2 * 1.2))
     axes = plt.gca()
